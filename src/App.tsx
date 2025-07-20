@@ -42,12 +42,19 @@ function App() {
             </div>
           </div>
           <MembershipPlans />
-          <section>
-            <header className="text-center font-menbere font-bold text-3xl uppercase">
-              The D21 Way
+          <section className="container px-4">
+            <header className="text-center font-lexend font-bold text-3xl uppercase">
+              About D21
             </header>
-            <p>About Section</p>
-            <p>Built by the </p>
+            <article className="font-open-sans">
+              Founded by twin brothers Don and Dustin at just 21 years old, D21
+              Fitness Gym is more than a gym — it's a vision born from athletic
+              passion and performance-driven training. Located in Rosario,
+              Batangas, this 360 sqm fully equipped, air-conditioned facility
+              blends sports and fitness for everyone striving to stay active and
+              strong.
+            </article>
+            <p>Discover the story behind D21</p>
           </section>
         </main>
         <Footer />
