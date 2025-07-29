@@ -29,7 +29,7 @@ function Hero() {
             </p>
           </h1>
           <Button
-            className="shadow-[4px_4px_0_2px_#FFF] ml-2 px-6 justify-end hover:bg-accent-2"
+            className="shadow-[4px_4px_0_2px_#FFF] ml-2 p-6 justify-end hover:bg-accent-2"
             asChild
           >
             <Link to="/registrations" className="font-lexend text-xl uppercase">
