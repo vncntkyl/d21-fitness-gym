@@ -1,3 +1,4 @@
+import Header from "@/components/layouts/header";
 import SubscriptionCards from "@/components/routes/memberships/cards";
 import StackedDragCarousel from "@/components/routes/memberships/stackedCards";
 import { Button } from "@/components/ui/button";
@@ -8,9 +9,7 @@ function MembershipPlans() {
   const { isSM, isMD, isXL } = useScreenWidth();
   return (
     <section className="flex flex-col gap-4 p-8">
-      <header className="text-center font-lexend font-bold text-3xl uppercase border-b-2 border-b-primary italic">
-        Choose your grind
-      </header>
+      <Header text="Choose your grind" />
       <p className="text-center">
         Whether you're a student or a pro, we've got a membership plan that fits
         your goals and your budget!

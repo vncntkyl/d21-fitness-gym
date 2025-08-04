@@ -1,6 +1,13 @@
 import Navbar from "@/components/layouts/navbar";
 import { BrowserRouter } from "react-router-dom";
-import { MembershipPlans, Hero, Stats, About, Gym } from "./routes/public/Home";
+import {
+  MembershipPlans,
+  Hero,
+  Stats,
+  About,
+  Gym,
+  Registration,
+} from "./routes/public/Home";
 import Footer from "./components/layouts/footer";
 import { ScreenWidthProvider } from "./context/screenWidthContext";
 function App() {
@@ -17,6 +24,7 @@ function App() {
             <MembershipPlans />
             <About />
             <Gym />
+            <Registration />
           </main>
           <Footer />
         </div>

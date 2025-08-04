@@ -48,7 +48,7 @@ function Gym() {
             </div>
           ))}
         </motion.div>
-        <Button className="text-white mx-auto px-4 py-6">Ready to join?</Button>
+        <Button className="text-white mx-auto px-4 py-6">Explore more</Button>
       </div>
     </section>
   );
