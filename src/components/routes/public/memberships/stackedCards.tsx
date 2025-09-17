@@ -1,8 +1,6 @@
-"use client";
-
 import { Button } from "@/components/ui/button";
 import { subscriptions } from "@/data/pricing";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, type PanInfo } from "framer-motion";
 import { useMemo, useState } from "react";
 
 export default function StackedDragCarousel() {
@@ -36,7 +34,7 @@ export default function StackedDragCarousel() {
     return { x: 0, y: 0, scale: 0.7, zIndex: 0, opacity: 0 };
   };
 
-  const handleDragEnd = (_: any, info: any) => {
+  const handleDragEnd = (_: unknown, info: PanInfo) => {
     const threshold = 50;
 
     if (info.offset.x < -threshold) {

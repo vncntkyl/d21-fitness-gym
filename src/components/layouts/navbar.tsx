@@ -8,8 +8,9 @@ import Sidebar from "./sidebar";
 import { cn } from "@/lib/utils";
 import { items } from "@/data/links";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 function Navbar() {
+  const { pathname } = useLocation();
   const [show, setShow] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [open, onOpen] = useState(false);
@@ -35,7 +36,10 @@ function Navbar() {
   // Intersection observer logic
   useEffect(() => {
     const heroEl = document.getElementById("hero");
-    if (!heroEl) return;
+    if (!heroEl) {
+      setIsHeroDisplayed(false);
+      return;
+    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -49,7 +53,7 @@ function Navbar() {
     observer.observe(heroEl);
 
     return () => observer.disconnect();
-  }, []);
+  }, [pathname]);
 
   return (
     <motion.header
@@ -85,7 +89,7 @@ function Navbar() {
               <Button
                 className="px-4 justify-end hover:bg-accent-2 font-audiowide"
                 asChild
-                // onClick={() => onOpen(false)}
+              // onClick={() => onOpen(false)}
               >
                 <Link to="/registrations" >Join us now!</Link>
               </Button>

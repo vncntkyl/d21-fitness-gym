@@ -8,8 +8,8 @@ function Hero() {
     >
       <div className="bg-black/60 h-full w-full flex items-center justify-center">
         <div className="container flex flex-col justify-center items-start p-4 gap-8">
-          <h1 className="text-white text-6xl font-lexend uppercase space-y-2">
-            <p className="tracking-tighter text-4xl font-semibold pl-2">
+          <h1 className="text-white text-6xl lg:text-8xl font-lexend uppercase space-y-2">
+            <p className="tracking-tighter text-4xl lg:text-6xl font-semibold pl-2">
               Built by
             </p>
             <p
@@ -18,7 +18,7 @@ function Hero() {
             >
               Athletes
             </p>
-            <p className="tracking-tight text-4xl font-semibold pl-2">
+            <p className="tracking-tight text-4xl lg:text-6xl font-semibold pl-2">
               Made for
             </p>
             <p
