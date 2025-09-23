@@ -3,6 +3,7 @@ import { revalidate } from "@/api/auth";
 import type { AuthProvider } from "@/types/Auth";
 import type { User } from "@/types/User";
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
+import { useNavigate } from "react-router-dom";
 
 const AuthProviderContext = createContext<AuthProvider | null>(null);
 
@@ -18,6 +19,7 @@ export const useAuth = (): AuthProvider => {
 
 export function AuthProvider({ children }: { children: ReactNode }) {
     const [user, setUser] = useState<User | null>(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         console.count("render");
@@ -33,6 +35,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const logout = () => {
         localStorage.removeItem("token");
         setUser(null);
+        navigate("/")
     }
 
     const value = { user, setUser, logout };

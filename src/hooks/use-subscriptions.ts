@@ -15,6 +15,16 @@ export const useSubscriptions = () => {
     queryKey: ["subscriptions"],
     queryFn: () => getAll<Subscription[]>("subscriptions"),
     staleTime: 60 * 10 * 1000,
+    select: (data) => {
+      return data.map((item) => {
+        return {
+          ...item,
+          subscription_type: Number(item.subscription_type),
+          duration: Number(item.duration),
+          payment_mode: Number(item.payment_mode),
+        };
+      });
+    },
   });
 };
 
@@ -24,6 +34,14 @@ export const useSubscription = (id?: number) => {
     queryFn: () => getOne<Subscription>("subscriptions", id!),
     enabled: !!id,
     staleTime: 60 * 10 * 1000,
+    select: (item) => {
+      return {
+        ...item,
+        subscription_type: Number(item.subscription_type),
+        duration: Number(item.duration),
+        payment_mode: Number(item.payment_mode),
+      };
+    },
   });
 };
 

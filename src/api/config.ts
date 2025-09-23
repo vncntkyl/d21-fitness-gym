@@ -7,13 +7,13 @@ export const api = axios.create({ baseURL: url, timeout: 120000 });
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");
 
-  if (!["auth", "roles"].some((path) => config.url?.includes(path)) && !token) {
-    return Promise.reject({
-      message: "No authentication token found. Request cancelled.",
-      config,
-      isAuthError: true, // optional custom flag
-    });
-  }
+  // if (!["auth", "roles"].some((path) => config.url?.includes(path)) && !token) {
+  //   return Promise.reject({
+  //     message: "No authentication token found. Request cancelled.",
+  //     config,
+  //     isAuthError: true, // optional custom flag
+  //   });
+  // }
   if (token && !config.url?.includes("auth")) {
     config.headers.Authorization = `Bearer ${token}`;
   }

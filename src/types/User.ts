@@ -5,6 +5,7 @@ export type User = {
   last_name: string;
   username: string;
   email_address: string;
+  image: string | null;
   contact_number: string | null;
   address: string;
   birthday: string;

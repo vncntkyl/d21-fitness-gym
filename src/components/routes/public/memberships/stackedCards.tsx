@@ -1,9 +1,13 @@
 import { Button } from "@/components/ui/button";
-import { subscriptions } from "@/data/pricing";
+import type { Subscription } from "@/types/Subscriptions";
 import { motion, AnimatePresence, type PanInfo } from "framer-motion";
 import { useMemo, useState } from "react";
 
-export default function StackedDragCarousel() {
+export default function StackedDragCarousel({
+  subscriptions,
+}: {
+  subscriptions: Subscription[];
+}) {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const cards = useMemo(() => {
@@ -76,7 +80,7 @@ export default function StackedDragCarousel() {
                   {Intl.NumberFormat("en-PH", {
                     style: "currency",
                     currency: "PHP",
-                  }).format(card.price / card.duration)}
+                  }).format(Number(card.amount))}
                 </p>
                 <span className="text-white/70">per month</span>
               </main>

@@ -1,22 +1,13 @@
 import { Button } from "@/components/ui/button";
+import type { Subscription } from "@/types/Subscriptions";
 
-type Subscription = {
-  duration: number;
-  price: number;
-  description: string;
-};
-
-function SubscriptionCard({ duration, price, description }: Subscription) {
-  const pricePerMonth = price / duration;
-
+function SubscriptionCard({ name, amount, description }: Subscription) {
   return (
     <div
-      className={`w-full max-w-sm h-64 flex flex-col gap-4 justify-between font-lexend text-white bg-black [clip-path:polygon(0_0,calc(100%_-_1rem)_0,100%_1rem,100%_100%,1rem_100%,0_calc(100%_-_1rem))] p-4 border border-primary`}
+      className={`w-full max-w-xs h-56 flex flex-col gap-4 justify-between font-lexend text-white bg-black [clip-path:polygon(0_0,calc(100%_-_1rem)_0,100%_1rem,100%_100%,1rem_100%,0_calc(100%_-_1rem))] p-4 border border-primary`}
     >
       <header className="font-audiowide text-2xl">
-        <p>
-          {duration} Month{duration > 1 ? "s" : ""}
-        </p>
+        <p>{name}</p>
         <p className="text-sm font-lexend text-white/60">{description}</p>
       </header>
       <main className="flex items-end gap-1.5 mt-auto">
@@ -24,7 +15,7 @@ function SubscriptionCard({ duration, price, description }: Subscription) {
           {Intl.NumberFormat("en-PH", {
             style: "currency",
             currency: "PHP",
-          }).format(pricePerMonth)}
+          }).format(Number(amount))}
         </p>
         <span className="text-white/70">per month</span>
       </main>

@@ -9,6 +9,12 @@ import { cn } from "@/lib/utils";
 import { items } from "@/data/links";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "react-router-dom";
+import {
+  NavigationMenu,
+  NavigationMenuLink,
+  NavigationMenuList,
+} from "../ui/navigation-menu";
+import NavbarDropdown from "./navbarDropdown";
 function Navbar() {
   const { pathname } = useLocation();
   const [show, setShow] = useState(true);
@@ -57,11 +63,11 @@ function Navbar() {
 
   return (
     <motion.header
-      animate={{ y: show ? 0 : -100 }}
+      animate={{ y: pathname.includes("profile") ? 0 : show ? 0 : -100 }}
       transition={{ duration: 0.3 }}
       className={cn(
         "fixed top-0 transition-all w-full flex items-center justify-center z-50",
-        isHeroDisplayed ? "bg-transparent" : "bg-black shadow-lg"
+        isHeroDisplayed ? "bg-[#00000000]" : "bg-[#000000] shadow-lg"
       )}
     >
       <nav className="container flex items-center justify-between px-4">
@@ -75,26 +81,27 @@ function Navbar() {
           </Sheet>
         ) : (
           <section className="flex items-center">
-            {items.map((item) => (
-              <Button
-                key={item.title}
-                asChild
-                className="bg-transparent justify-end transition-all duration-500 font-menbere font-semibold tracking-wider"
-                onClick={() => onOpen(false)}
-              >
-                <Link to={item.url}>{item.title}</Link>
-              </Button>
-            ))}
-            {!isHeroDisplayed && (
-              <Button
-                className="px-4 justify-end hover:bg-accent-2 font-audiowide"
-                asChild
-              // onClick={() => onOpen(false)}
-              >
-                <Link to="/registrations" >Join us now!</Link>
-              </Button>
-            )}
+            <NavigationMenu>
+              <NavigationMenuList className="">
+                {items.map((item) => (
+                  <NavigationMenuLink
+                    key={item.title}
+                    asChild
+                    className="text-white hover:text-white hover:underline hover:bg-transparent"
+                  >
+                    <Link to={item.url}>{item.title}</Link>
+                  </NavigationMenuLink>
+                ))}
+              </NavigationMenuList>
+            </NavigationMenu>
           </section>
+        )}
+        {localStorage.getItem("token") ? (
+          <NavbarDropdown />
+        ) : (
+          <Button size="sm" className="justify-end hover:bg-primary/70" asChild>
+            <Link to="/login">D21 Hub</Link>
+          </Button>
         )}
       </nav>
     </motion.header>
